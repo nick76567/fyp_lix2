@@ -1,5 +1,5 @@
-﻿using CnControls;
-using UnityEngine;
+﻿using UnityEngine;
+using CnControls;
 
 namespace SwordWorld
 {
@@ -26,27 +26,29 @@ namespace SwordWorld
         //public float jumpHeight = 5.0f;
         //public float jumpCooldown = 1.0f;
         //private bool isJump;
-        
+
         void Awake()
         {
-            // Set up references.
             DontDestroyOnLoad(gameObject.transform);
 
             if(!photonView.isMine)
             {
                 this.enabled = false;
             }
+            // Set up references.
             animator = GetComponent<Animator>();
             playerRigidbody = GetComponent<Rigidbody>();
 
             cameraTransform = Camera.main.transform;
+
+
         }
 
         void Update()
         {
             h = CnInputManager.GetAxisRaw("Horizontal");
             v = CnInputManager.GetAxisRaw("Vertical");
-            //isJump = Input.GetButtonDown("Jump");
+            //isJump = CnInputManager.GetButtonDown("Jump");
             isWalk = Mathf.Abs(h) > 0.1 || Mathf.Abs(v) > 0.1;
 
             if (isWalk)
@@ -104,16 +106,16 @@ namespace SwordWorld
                 }
             }
         }
-
-        //void Jump(float h, float v)
-        //{
-        //   if (isJump)
-        //    {
-        //        animator.SetTrigger("Jump");
-        //        playerRigidbody.velocity = new Vector3(0, jumpHeight, 0);
-        //    }
-        //}
-
+        /*/
+        void Jump(float h, float v)
+        {
+            if (isJump)
+            {
+                animator.SetTrigger("Jump");
+                playerRigidbody.velocity = new Vector3(0, jumpHeight, 0);
+            }
+        }
+        /*/
         Vector3 Rotate(float h, float v)
         {
             Vector3 forward = cameraTransform.TransformDirection(Vector3.forward);
@@ -130,7 +132,6 @@ namespace SwordWorld
 
                 Quaternion newRotation = Quaternion.Slerp(GetComponent<Rigidbody>().rotation, targetRotation, turnSmoothing * Time.deltaTime);
 
-                // TODO：不知为毛，Rigid 的约束不起作用，只能手动设置为 0
                 newRotation.x = 0f;
                 newRotation.z = 0f;
                 GetComponent<Rigidbody>().MoveRotation(newRotation);
