@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+<<<<<<< HEAD
 public class player_attack : MonoBehaviour
 {
     bool attack1State;
@@ -56,6 +57,27 @@ public class player_attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+ // defense
+        if (!anim.IsInTransition(0) && defenseState == true)
+        {
+            anim.SetTrigger("Burst");
+            defenseState = false;
+            return;
+        }
+        // Attack_1
+        if (!anim.IsInTransition(0) && attack1State == true)
+        {
+            anim.SetTrigger("Attack_1");
+            attack1State = false;
+            return;
+        }
+        //attack_2
+        if (!anim.IsInTransition(0) && attack2State == true)
+        {
+            anim.SetTrigger("Dead");
+            attack2State = false;
+            return;
+        }
 
     }
 
@@ -108,4 +130,60 @@ public class player_attack : MonoBehaviour
 
 
     }
+=======
+public class player_attack : MonoBehaviour
+{
+    private Animator anim; 
+
+    // Use this for initialization
+    void Awake()
+    {
+        // Set up references.
+        anim = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    void FixedUpdate()
+    {
+        // Attack
+        if (Input.GetButtonDown("Attack_1"))
+        {
+            anim.SetTrigger("Attack_1");
+            return;
+        }
+
+        // dead
+        if (Input.GetButtonDown("Dead"))
+        {
+            anim.SetTrigger("Dead");
+            return;
+        }
+
+        // damage
+        if (Input.GetButtonDown("Damage"))
+        {
+            anim.SetTrigger("Damage");
+            return;
+        }
+
+        // burst
+        if (Input.GetButtonDown("Burst"))
+        {
+            anim.SetTrigger("Burst");
+            return;
+        }
+
+        // defense
+        if (Input.GetButtonDown("Defense"))
+        {
+            anim.SetTrigger("Defense");
+            return;
+        }
+    }
+>>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
 }
