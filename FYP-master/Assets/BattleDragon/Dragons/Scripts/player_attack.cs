@@ -2,6 +2,7 @@
 using System.Collections;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class player_attack : MonoBehaviour
 {
     bool attack1State;
@@ -131,6 +132,8 @@ public class player_attack : MonoBehaviour
 
     }
 =======
+=======
+>>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
 public class player_attack : MonoBehaviour
 {
     private Animator anim; 
@@ -185,5 +188,8 @@ public class player_attack : MonoBehaviour
             return;
         }
     }
+<<<<<<< HEAD
+>>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
+=======
 >>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
 }

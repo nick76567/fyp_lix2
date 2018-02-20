@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿using CnControls;
 using UnityEngine;
 
@@ -142,6 +143,8 @@ namespace SwordWorld
     }
 }
 =======
+=======
+>>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
 ﻿using UnityEngine;
 using CnControls;
 
@@ -284,5 +287,9 @@ namespace SwordWorld
             return targetDirection;
         }
     }
+<<<<<<< HEAD
+}
+>>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
+=======
 }
 >>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
