@@ -39,19 +39,9 @@ public class PhotonNetworkManager : Photon.PunBehaviour {
 
         void Spawn()
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
             GameObject g = PhotonNetwork.Instantiate("dragon",new Vector3(0.64f,0.49f,5.18f),Quaternion.identity,0);
             //This part loaded the character into game, we can load different character as long as changing the the first parameter
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().target = g.transform;
-=======
-            localPlayer = PhotonNetwork.Instantiate("dragon",new Vector3(0.64f,0.49f,5.18f),Quaternion.identity,0);
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().target = localPlayer.transform;
->>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
-=======
-            localPlayer = PhotonNetwork.Instantiate("dragon",new Vector3(0.64f,0.49f,5.18f),Quaternion.identity,0);
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().target = localPlayer.transform;
->>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
         }
 
         public void ButtonEvents(string EVENT)
