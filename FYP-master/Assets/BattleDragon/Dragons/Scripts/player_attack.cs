@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 public class player_attack : MonoBehaviour
 {
     bool attack1State;
@@ -131,65 +129,4 @@ public class player_attack : MonoBehaviour
 
 
     }
-=======
-=======
->>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
-public class player_attack : MonoBehaviour
-{
-    private Animator anim; 
-
-    // Use this for initialization
-    void Awake()
-    {
-        // Set up references.
-        anim = GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void FixedUpdate()
-    {
-        // Attack
-        if (Input.GetButtonDown("Attack_1"))
-        {
-            anim.SetTrigger("Attack_1");
-            return;
-        }
-
-        // dead
-        if (Input.GetButtonDown("Dead"))
-        {
-            anim.SetTrigger("Dead");
-            return;
-        }
-
-        // damage
-        if (Input.GetButtonDown("Damage"))
-        {
-            anim.SetTrigger("Damage");
-            return;
-        }
-
-        // burst
-        if (Input.GetButtonDown("Burst"))
-        {
-            anim.SetTrigger("Burst");
-            return;
-        }
-
-        // defense
-        if (Input.GetButtonDown("Defense"))
-        {
-            anim.SetTrigger("Defense");
-            return;
-        }
-    }
-<<<<<<< HEAD
->>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
-=======
->>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
 }

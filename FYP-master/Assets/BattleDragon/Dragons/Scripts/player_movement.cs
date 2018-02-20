@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-﻿using CnControls;
+using CnControls;
 using UnityEngine;
 
 namespace SwordWorld
 {
-    public class player_movement
-        : Photon.MonoBehaviour
+    public class player_movement: Photon.MonoBehaviour
     {
         public float walk_speed = 6f;
         public float run_speed = 12f;
@@ -24,11 +21,6 @@ namespace SwordWorld
         private float h;
         private float v;
 
-        // jump
-        //public float jumpHeight = 5.0f;
-        //public float jumpCooldown = 1.0f;
-        //private bool isJump;
-        
         void Awake()
         {
             // Set up references.
@@ -40,7 +32,6 @@ namespace SwordWorld
             }
             animator = GetComponent<Animator>();
             playerRigidbody = GetComponent<Rigidbody>();
-
             cameraTransform = Camera.main.transform;
         }
 
@@ -48,7 +39,6 @@ namespace SwordWorld
         {
             h = CnInputManager.GetAxisRaw("Horizontal");
             v = CnInputManager.GetAxisRaw("Vertical");
-            //isJump = Input.GetButtonDown("Jump");
             isWalk = Mathf.Abs(h) > 0.1 || Mathf.Abs(v) > 0.1;
 
             if (isWalk)
@@ -76,8 +66,6 @@ namespace SwordWorld
             // Turn the player to face the mouse cursor. 
             Rotate(h, v);
 
-            // Jump
-            //Jump(h, v);
         }
 
         void Move(float h, float v)
@@ -107,15 +95,6 @@ namespace SwordWorld
             }
         }
 
-        //void Jump(float h, float v)
-        //{
-        //   if (isJump)
-        //    {
-        //        animator.SetTrigger("Jump");
-        //        playerRigidbody.velocity = new Vector3(0, jumpHeight, 0);
-        //    }
-        //}
-
         Vector3 Rotate(float h, float v)
         {
             Vector3 forward = cameraTransform.TransformDirection(Vector3.forward);
@@ -142,154 +121,3 @@ namespace SwordWorld
         }
     }
 }
-=======
-=======
->>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
-﻿using UnityEngine;
-using CnControls;
-
-namespace SwordWorld
-{
-    public class player_movement
-        : Photon.MonoBehaviour
-    {
-        public float walk_speed = 6f;
-        public float run_speed = 12f;
-
-
-        private Vector3 movement;
-        private Animator animator;
-        private Rigidbody playerRigidbody;
-
-        // rotate
-        public float turnSmoothing = 3.0f;
-        private Transform cameraTransform;
-        private bool isWalk;
-        private bool isRun;
-        private float h;
-        private float v;
-
-        // jump
-        //public float jumpHeight = 5.0f;
-        //public float jumpCooldown = 1.0f;
-        //private bool isJump;
-
-        void Awake()
-        {
-            DontDestroyOnLoad(gameObject.transform);
-
-            if(!photonView.isMine)
-            {
-                this.enabled = false;
-            }
-            // Set up references.
-            animator = GetComponent<Animator>();
-            playerRigidbody = GetComponent<Rigidbody>();
-
-            cameraTransform = Camera.main.transform;
-
-
-        }
-
-        void Update()
-        {
-            h = CnInputManager.GetAxisRaw("Horizontal");
-            v = CnInputManager.GetAxisRaw("Vertical");
-            //isJump = CnInputManager.GetButtonDown("Jump");
-            isWalk = Mathf.Abs(h) > 0.1 || Mathf.Abs(v) > 0.1;
-
-            if (isWalk)
-            {
-                if (isRun)
-                {
-                    isRun = !(Mathf.Abs(h) > 0.9 || Mathf.Abs(v) > 0.9);
-                }
-                else
-                {
-                    isRun = (Mathf.Abs(h) > 0.9 || Mathf.Abs(v) > 0.9);
-                }
-            }
-            else
-            {
-                isRun = false;
-            }
-        }
-
-        void FixedUpdate()
-        {
-            // Move the player around the scene.
-            Move(h, v);
-
-            // Turn the player to face the mouse cursor. 
-            Rotate(h, v);
-
-            // Jump
-            //Jump(h, v);
-        }
-
-        void Move(float h, float v)
-        {
-            float speed = isRun ? run_speed : walk_speed;
-
-            // Set the movement vector based on the axis input.
-            movement.Set(h, 0.0f, v);
-
-            // Normalise the movement vector and make it proportional to the speed per second.
-            movement = movement.normalized * speed * Time.deltaTime;
-
-            // Move the player to it's current position plus the movement.
-            playerRigidbody.MovePosition(transform.position + movement);
-
-            // Animator
-            {
-                if (isRun)
-                {
-                    animator.SetBool("IsRun", isRun);
-                }
-                else
-                {
-                    animator.SetBool("IsRun", isRun);
-                    animator.SetBool("IsWalk", isWalk);
-                }
-            }
-        }
-        /*/
-        void Jump(float h, float v)
-        {
-            if (isJump)
-            {
-                animator.SetTrigger("Jump");
-                playerRigidbody.velocity = new Vector3(0, jumpHeight, 0);
-            }
-        }
-        /*/
-        Vector3 Rotate(float h, float v)
-        {
-            Vector3 forward = cameraTransform.TransformDirection(Vector3.forward);
-            forward = forward.normalized;
-
-            Vector3 right = new Vector3(forward.z, 0, -forward.x);
-
-            Vector3 targetDirection;
-            targetDirection = forward * v + right * h;
-
-            if ((isWalk && targetDirection != Vector3.zero))
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
-
-                Quaternion newRotation = Quaternion.Slerp(GetComponent<Rigidbody>().rotation, targetRotation, turnSmoothing * Time.deltaTime);
-
-                newRotation.x = 0f;
-                newRotation.z = 0f;
-                GetComponent<Rigidbody>().MoveRotation(newRotation);
-            }
-
-            return targetDirection;
-        }
-    }
-<<<<<<< HEAD
-}
->>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275
-=======
-}
->>>>>>> 6e02767f39b70690a96cf5729ce0047b5778b275

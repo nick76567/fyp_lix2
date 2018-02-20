@@ -56,7 +56,6 @@
      <Compile Include="Assets\BattleDragon\Colosseum\Dust\ParticleSystems\Scripts\SmokeParticles.cs" />
      <Compile Include="Assets\BattleDragon\Colosseum\Dust\ParticleSystems\Scripts\WaterHoseParticles.cs" />
      <Compile Include="Assets\BattleDragon\Dragons\Scripts\Camera\CameraFollow.cs" />
-     <Compile Include="Assets\BattleDragon\Dragons\Scripts\SmoothTransform.cs" />
      <Compile Include="Assets\BattleDragon\Dragons\Scripts\animator_controller.cs" />
      <Compile Include="Assets\BattleDragon\Dragons\Scripts\animator_settor.cs" />
      <Compile Include="Assets\BattleDragon\Dragons\Scripts\player_attack.cs" />
@@ -207,7 +206,6 @@
      <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\PhotonNetworkManager.cs" />
-     <Compile Include="Assets\Scripts\SpawnSpot.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -250,7 +248,6 @@
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
-     <None Include="Assets\StreamingAssets\Vuforia\FYPDatabase.xml" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\readme_SDK.txt" />
