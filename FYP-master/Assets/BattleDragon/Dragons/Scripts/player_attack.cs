@@ -3,9 +3,6 @@ using System.Collections;
 
 public class player_attack : MonoBehaviour
 {
-    bool attack1State;
-    bool defenseState;
-    bool attack2State;
     private Animator anim; 
 
     // Use this for initialization
@@ -13,98 +10,23 @@ public class player_attack : MonoBehaviour
     {
         // Set up references.
         anim = GetComponent<Animator>();
-        attack1State = false;
-        defenseState = false;
-       
     }
 
-    public void attack1() {
-
-        if (attack1State == false)
-        {
-            attack1State = true;
-        }
-        else {
-            attack1State = false;
-        }
-       
-    }
-    public void attack2()
-    {
-
-        if (attack2State == false)
-        {
-            attack2State = true;
-        }
-        else
-        {
-            attack2State = false;
-        }
-
-    }
-
-    public void defense() {
-        if (defenseState == false)
-        {
-            defenseState = true;
-        }
-        else
-        {
-            defenseState = false;
-        }
-    }
     // Update is called once per frame
     void Update()
     {
- // defense
-        if (!anim.IsInTransition(0) && defenseState == true)
-        {
-            anim.SetTrigger("Burst");
-            defenseState = false;
-            return;
-        }
-        // Attack_1
-        if (!anim.IsInTransition(0) && attack1State == true)
-        {
-            anim.SetTrigger("Attack_1");
-            attack1State = false;
-            return;
-        }
-        //attack_2
-        if (!anim.IsInTransition(0) && attack2State == true)
-        {
-            anim.SetTrigger("Dead");
-            attack2State = false;
-            return;
-        }
 
     }
 
     void FixedUpdate()
     {
-        // defense
-        if (!anim.IsInTransition(0) && defenseState == true)
-        {
-            anim.SetTrigger("Burst");
-            defenseState = false;
-            return;
-        }
-        // Attack_1
-        if (!anim.IsInTransition(0) && attack1State == true)
+        // Attack
+        if (Input.GetButtonDown("Attack_1"))
         {
             anim.SetTrigger("Attack_1");
-            attack1State = false;
-            return;
-        }
-        //attack_2
-        if (!anim.IsInTransition(0) && attack2State == true)
-        {
-            anim.SetTrigger("Dead");
-            attack2State = false;
             return;
         }
 
-        /*
         // dead
         if (Input.GetButtonDown("Dead"))
         {
@@ -125,8 +47,12 @@ public class player_attack : MonoBehaviour
             anim.SetTrigger("Burst");
             return;
         }
-        */
 
-
+        // defense
+        if (Input.GetButtonDown("Defense"))
+        {
+            anim.SetTrigger("Defense");
+            return;
+        }
     }
 }

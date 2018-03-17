@@ -1,9 +1,9 @@
-using CnControls;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SwordWorld
 {
-    public class player_movement: Photon.MonoBehaviour
+    public class player_movement
+        : MonoBehaviour
     {
         public float walk_speed = 6f;
         public float run_speed = 12f;
@@ -21,35 +21,36 @@ namespace SwordWorld
         private float h;
         private float v;
 
+        // jump
+        public float jumpHeight = 5.0f;
+        public float jumpCooldown = 1.0f;
+        private bool isJump;
+
         void Awake()
         {
             // Set up references.
-            DontDestroyOnLoad(gameObject.transform);
-
-            if(!photonView.isMine)
-            {
-                this.enabled = false;
-            }
             animator = GetComponent<Animator>();
             playerRigidbody = GetComponent<Rigidbody>();
+
             cameraTransform = Camera.main.transform;
         }
 
         void Update()
         {
-            h = CnInputManager.GetAxisRaw("Horizontal");
-            v = CnInputManager.GetAxisRaw("Vertical");
+            h = Input.GetAxisRaw("Horizontal");
+            v = Input.GetAxisRaw("Vertical");
+            isJump = Input.GetButtonDown("Jump");
             isWalk = Mathf.Abs(h) > 0.1 || Mathf.Abs(v) > 0.1;
 
             if (isWalk)
             {
                 if (isRun)
                 {
-                    isRun = !(Mathf.Abs(h) > 0.9 || Mathf.Abs(v) > 0.9);
+                    isRun = !Input.GetButtonUp("Run");
                 }
                 else
                 {
-                    isRun = (Mathf.Abs(h) > 0.9 || Mathf.Abs(v) > 0.9);
+                    isRun = Input.GetButtonDown("Run");
                 }
             }
             else
@@ -63,9 +64,11 @@ namespace SwordWorld
             // Move the player around the scene.
             Move(h, v);
 
-            // Turn the player to face the mouse cursor. 
+            // Turn the player to face the mouse cursor.
             Rotate(h, v);
 
+            // Jump
+            Jump(h, v);
         }
 
         void Move(float h, float v)
@@ -95,6 +98,15 @@ namespace SwordWorld
             }
         }
 
+        void Jump(float h, float v)
+        {
+            if (isJump)
+            {
+                animator.SetTrigger("Jump");
+                playerRigidbody.velocity = new Vector3(0, jumpHeight, 0);
+            }
+        }
+
         Vector3 Rotate(float h, float v)
         {
             Vector3 forward = cameraTransform.TransformDirection(Vector3.forward);
@@ -111,7 +123,7 @@ namespace SwordWorld
 
                 Quaternion newRotation = Quaternion.Slerp(GetComponent<Rigidbody>().rotation, targetRotation, turnSmoothing * Time.deltaTime);
 
-
+                // TODO：不知为毛，Rigid 的约束不起作用，只能手动设置为 0
                 newRotation.x = 0f;
                 newRotation.z = 0f;
                 GetComponent<Rigidbody>().MoveRotation(newRotation);
