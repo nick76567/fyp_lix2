@@ -7,6 +7,7 @@ public class Playermovement : Photon.MonoBehaviour {
         public float walk_speed = 2f;
         public float run_speed = 4f;
 
+        private Player player;
 
         private Vector3 movement;
         private Animator animator;
@@ -32,6 +33,7 @@ public class Playermovement : Photon.MonoBehaviour {
             playerRigidbody = GetComponent<Rigidbody>();
 
             cameraTransform = Camera.main.transform;
+            player = GetComponent<Player> ();
         }
 
         void Update()
@@ -45,6 +47,8 @@ public class Playermovement : Photon.MonoBehaviour {
                 if (isRun)
                 {
                     isRun = !(Mathf.Abs(h) > 0.9 || Mathf.Abs(v) > 0.9);
+                    player.health++;
+					player.attack++;
                 }
                 else
                 {

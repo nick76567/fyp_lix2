@@ -58,6 +58,7 @@
      <Compile Include="Assets\Standard Assets\CNControls\Scripts\Controllers\SimpleJoystick.cs" />
      <Compile Include="Assets\Standard Assets\CNControls\Scripts\Controllers\Touchpad.cs" />
      <Compile Include="Assets\Standard Assets\CNControls\Scripts\EmptyGraphic.cs" />
+     <None Include="Assets\Database Control Free\Demos\UnityScript\Readme.txt" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />
@@ -96,6 +97,7 @@
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
+     <None Include="Assets\Database Control Free\Resources\DCF_RuntimeData.txt" />
      <None Include="Assets\StreamingAssets\Vuforia\FYPDatabase.xml" />
      <None Include="Assets\Photon Unity Networking\Demos\Shared Assets\Skin\3dText.shader" />
      <None Include="Assets\Vuforia\Shaders\ClippingMask.shader" />
@@ -126,20 +128,23 @@
  <Reference Include="UnityEngine.VR">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
+ <Reference Include="DatabaseControl">
+ <HintPath>/Users/user/Documents/fyp_lix2/FYP-master/Assets/Database Control Free/Scripts/DatabaseControl.dll</HintPath>
+ </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>/Users/c.h.sun/Desktop/fyp_lix2/FYP-master/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>/Users/user/Documents/fyp_lix2/FYP-master/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>/Users/c.h.sun/Desktop/fyp_lix2/FYP-master/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>/Users/user/Documents/fyp_lix2/FYP-master/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
  <Reference Include="TextMeshPro-2017.2-1.0.56-Editor">
- <HintPath>/Users/c.h.sun/Desktop/fyp_lix2/FYP-master/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.2-1.0.56-Editor.dll</HintPath>
+ <HintPath>/Users/user/Documents/fyp_lix2/FYP-master/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.2-1.0.56-Editor.dll</HintPath>
  </Reference>
  <Reference Include="TextMeshPro-2017.2-1.0.56-Runtime">
- <HintPath>/Users/c.h.sun/Desktop/fyp_lix2/FYP-master/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.2-1.0.56-Runtime.dll</HintPath>
+ <HintPath>/Users/user/Documents/fyp_lix2/FYP-master/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.2-1.0.56-Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Vuforia.UnityExtensions">
- <HintPath>/Users/c.h.sun/Desktop/fyp_lix2/FYP-master/Assets/Vuforia/Scripts/Internal/Vuforia.UnityExtensions.dll</HintPath>
+ <HintPath>/Users/user/Documents/fyp_lix2/FYP-master/Assets/Vuforia/Scripts/Internal/Vuforia.UnityExtensions.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
